@@ -2,6 +2,12 @@ const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.site-nav');
 
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+window.addEventListener('pageshow', () => {
+  if (!window.location.hash) window.scrollTo(0, 0);
+});
+
 const updateHeader = () => {
   header?.classList.toggle('scrolled', window.scrollY > 24);
 };
